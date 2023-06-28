@@ -1,5 +1,10 @@
+import 'package:chat_app/screens/auth/login_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../api/apis.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -36,11 +41,17 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
 
-      // Floating Button 
+      // Floating Button
+      // This button work for Signout
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 10),
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () async {
+            await APIs.auth.signOut();
+            await GoogleSignIn().signOut();
+             Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+          },
           child: Icon(Icons.add_comment_rounded),
         ),
       ),
