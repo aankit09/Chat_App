@@ -1,4 +1,6 @@
+import 'package:chat_app/main.dart';
 import 'package:chat_app/screens/auth/login_screen.dart';
+import 'package:chat_app/widgets/chat_user_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,12 +51,19 @@ class _HomeScreenState extends State<HomeScreen> {
           onPressed: () async {
             await APIs.auth.signOut();
             await GoogleSignIn().signOut();
-             Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => LoginScreen()));
           },
           child: Icon(Icons.add_comment_rounded),
         ),
       ),
+      body: ListView.builder(
+          itemCount: 18,
+          padding: EdgeInsets.only(top: mq.height * .01),
+          physics: BouncingScrollPhysics(),
+          itemBuilder: (context, index) {
+            return ChatUserCard();
+          }),
     );
   }
 }
