@@ -42,6 +42,8 @@ dependencies:
   firebase_auth: any
   # Integrated Firebase
   firebase_core: any
+  # For Showing Network Image
+  cached_network_image: ^3.2.3
 
 
 dev_dependencies:

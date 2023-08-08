@@ -19,12 +19,12 @@ class ChatUser {
   late final String message;
   late final String pushToken;
   late final String email;
-  
-  ChatUser.fromJson(Map<String, dynamic> json){
+
+  ChatUser.fromJson(Map<String, dynamic> json) {
     image = json['image'] ?? '';
     name = json['name'] ?? '';
     createdAt = json['created_at'] ?? '';
-    isOnline = json['is_online'] ?? '';
+    isOnline = json['is_online'];
     id = json['id'] ?? '';
     lastActive = json['last_active'] ?? '';
     message = json['message'] ?? '';
